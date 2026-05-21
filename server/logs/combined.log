@@ -1,0 +1,23 @@
+2026-05-21 19:35:53 [info]: 🚀 Server running on port 5000 [development]
+2026-05-21 19:35:53 [info]: 📖 Health: http://localhost:5000/health
+2026-05-21 19:35:54 [error]: ❌ MongoDB connection failed: bad auth : authentication failed
+2026-05-21 19:36:13 [info]: 🚀 Server running on port 5000 [development]
+2026-05-21 19:36:13 [info]: 📖 Health: http://localhost:5000/health
+2026-05-21 19:36:14 [error]: ❌ MongoDB connection failed: bad auth : authentication failed
+2026-05-21 19:41:35 [info]: 🚀 Server running on port 5000 [development]
+2026-05-21 19:41:35 [info]: 📖 Health: http://localhost:5000/health
+2026-05-21 19:41:35 [error]: ❌ MongoDB connection failed: bad auth : authentication failed
+2026-05-21 19:43:43 [info]: 🚀 Server running on port 5000 [development]
+2026-05-21 19:43:43 [info]: 📖 Health: http://localhost:5000/health
+2026-05-21 19:43:44 [error]: ❌ MongoDB connection failed: bad auth : authentication failed
+2026-05-21 19:48:32 [info]: 🚀 Server running on port 5000 [development]
+2026-05-21 19:48:32 [info]: 📖 Health: http://localhost:5000/health
+2026-05-21 19:48:33 [info]: ✅ MongoDB Connected: ac-6xapq73-shard-00-00.s5hlmsl.mongodb.net
+2026-05-21 19:49:05 [info]: ::1 - - [21/May/2026:14:19:05 +0000] "POST /api/auth/register HTTP/1.1" 201 537 "http://localhost:5173/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2026-05-21 19:49:05 [info]: ::1 - - [21/May/2026:14:19:05 +0000] "GET /api/itinerary?page=1&limit=5 HTTP/1.1" 200 153 "http://localhost:5173/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2026-05-21 19:49:05 [info]: ::1 - - [21/May/2026:14:19:05 +0000] "GET /api/itinerary?page=1&limit=5 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2026-05-21 19:49:05 [info]: ::1 - - [21/May/2026:14:19:05 +0000] "GET /api/itinerary/stats HTTP/1.1" 200 109 "http://localhost:5173/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2026-05-21 19:49:05 [info]: ::1 - - [21/May/2026:14:19:05 +0000] "GET /api/itinerary/stats HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+2026-05-21 19:49:19 [info]: ::1 - - [21/May/2026:14:19:19 +0000] "GET /api/itinerary?page=1&limit=12&search=&favorite=false&sortBy=createdAt&sortOrder=desc HTTP/1.1" 200 154 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36"
+2026-05-21 19:49:42 [info]: ::1 - - [21/May/2026:14:19:42 +0000] "POST /api/auth/login HTTP/1.1" 401 55 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36"
+2026-05-21 20:34:34 [warn]: MongoDB disconnected. Attempting reconnect...
