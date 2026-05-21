@@ -21,3 +21,9 @@
 2026-05-21 19:49:19 [info]: ::1 - - [21/May/2026:14:19:19 +0000] "GET /api/itinerary?page=1&limit=12&search=&favorite=false&sortBy=createdAt&sortOrder=desc HTTP/1.1" 200 154 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36"
 2026-05-21 19:49:42 [info]: ::1 - - [21/May/2026:14:19:42 +0000] "POST /api/auth/login HTTP/1.1" 401 55 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36"
 2026-05-21 20:34:34 [warn]: MongoDB disconnected. Attempting reconnect...
+2026-05-21 21:21:39 [info]: 🚀 Server running on port 10000 [development]
+2026-05-21 21:21:39 [info]: 📖 Health: http://localhost:10000/health
+2026-05-21 21:21:40 [info]: ✅ MongoDB Connected: ac-6xapq73-shard-00-00.s5hlmsl.mongodb.net
+2026-05-21 21:22:04 [info]: 🚀 Server running on 0.0.0.0:5000 [development]
+2026-05-21 21:22:04 [info]: 📖 Health: http://0.0.0.0:5000/health
+2026-05-21 21:22:06 [info]: ✅ MongoDB Connected: ac-6xapq73-shard-00-00.s5hlmsl.mongodb.net
