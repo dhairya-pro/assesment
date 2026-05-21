@@ -1,17 +1,15 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 const port = Number(process.env.PORT) || 5173
 
+// No @vitejs/plugin-react — it injects $RefreshSig$ in dev, which breaks on Render
+// when the app is served without Vite's full dev runtime. JSX uses esbuild only.
 export default defineConfig({
-  plugins: [
-    react({
-      // Render sets RENDER=true — disable Fast Refresh there to avoid $RefreshSig$ errors
-      fastRefresh: process.env.RENDER !== 'true',
-    }),
-    tailwindcss(),
-  ],
+  plugins: [tailwindcss()],
+  esbuild: {
+    jsx: 'automatic',
+  },
   server: {
     host: '0.0.0.0',
     port,

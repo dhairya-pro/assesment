@@ -1,23 +1,16 @@
-# Render Blueprint — https://render.com/docs/blueprint-spec
+# Recommended: ONE web service (API + built React app). Delete separate frontend service.
 services:
   - type: web
-    name: ai-travel-api
+    name: ai-travel
     runtime: node
     rootDir: server
-    buildCommand: npm install
+    buildCommand: npm install && npm run build
     startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
-
-  - type: web
-    name: ai-travel-web
-    runtime: node
-    rootDir: client
-    buildCommand: npm install --include=dev && npm run build
-    startCommand: npm start
-    envVars:
-      - key: NODE_ENV
-        value: production
-      # Set in Render dashboard (required before build):
-      # VITE_API_URL=https://ai-travel-api.onrender.com/api
+      # Set in dashboard:
+      # MONGODB_URI, JWT_SECRET, GEMINI_API_KEY
+      # CLIENT_URL=https://ai-travel.onrender.com
+      # For same-origin API when using bundled frontend, set before build in client:
+      # VITE_API_URL=/api  (build runs via server/scripts/sync-client.js)

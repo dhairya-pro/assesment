@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "build:client": "node scripts/sync-client.js",
+    "build": "node scripts/sync-client.js",
+    "render:build": "npm install && npm run build:client",
+    "render:start": "npm start"
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",

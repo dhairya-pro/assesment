@@ -181,35 +181,34 @@ The app will be available at **http://localhost:5173**
 3. **Build command:** `npm install --include=dev && npm run build`
 4. **Publish / output directory:** `dist` (not `client` — serving the repo root causes `_jsxDEV is not a function`)
 
-### Frontend on Render (Web Service)
+### Deploy on Render (recommended — one service, API + frontend)
 
-Copy these **exactly** in the Render dashboard (or use `render.yaml` in the repo root):
+This avoids `$RefreshSig$` / `_jsxDEV` errors from misconfigured frontend deploys.
+
+| Setting | Value |
+|--------|--------|
+| **Root Directory** | `server` |
+| **Build Command** | `npm install && npm run build` |
+| **Start Command** | `npm start` |
+
+The build runs `scripts/sync-client.js` (builds React → `server/public/`). Express serves the app and `/api` on the same URL.
+
+**Environment variables:** `MONGODB_URI`, `JWT_SECRET`, `GEMINI_API_KEY`, `CLIENT_URL` (your Render URL), optional `VITE_API_URL=/api` (default for bundled build).
+
+Open your Render URL — DevTools → Network must show `/assets/index-….js`, **not** `/src/AuthContext.jsx`.
+
+### Separate frontend service (optional)
 
 | Setting | Value |
 |--------|--------|
 | **Root Directory** | `client` |
 | **Build Command** | `npm install && npm run build` |
 | **Start Command** | `npm start` |
-| **Never use** | `npm run dev` |
+| **Never use** | `npm run dev` or `vite` |
 
-**Environment variables** (add before deploy; `VITE_API_URL` is baked in at build time):
+**Static Site:** publish directory must be **`dist`**, not `client`.
 
-- `VITE_API_URL` = `https://YOUR-BACKEND.onrender.com/api`
-
-After deploy, open DevTools → Network. You must see `/assets/index-….js`. If you see `/src/AuthContext.jsx`, the settings above are wrong.
-
-`npm start` builds `dist/` if missing, then serves it with `serve` on `0.0.0.0`.
-
-### Frontend on Render (Static Site — recommended)
-
-| Setting | Value |
-|--------|--------|
-| **Root Directory** | `client` |
-| **Build Command** | `npm install && npm run build` |
-| **Publish Directory** | **`dist`** ← not `client` or `.` |
-| **Env** | `VITE_API_URL=https://YOUR-BACKEND.onrender.com/api` |
-
-Wrong publish directory (`client`) causes `$RefreshSig$ is not defined` and `_jsxDEV is not a function`.
+`VITE_API_URL=https://YOUR-BACKEND.onrender.com/api` (set before build).
 
 ### Backend (Render/Railway)
 1. **Root Directory:** `server` (not the repo root or `client`)

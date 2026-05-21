@@ -3,6 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const mongoSanitize = require('express-mongo-sanitize');
+const fs = require('fs');
 const path = require('path');
 require('dotenv').config();
 
@@ -90,13 +91,23 @@ app.use('/api/ocr', ocrRoutes);
 app.use('/api/itinerary', itineraryRoutes);
 app.use('/api/share', shareRoutes);
 
-// 404 handler
-app.use((req, res) => {
-  res.status(404).json({
-    success: false,
-    message: `Route ${req.originalUrl} not found`,
+// Production React app (built client/dist copied to server/public)
+const publicDir = path.join(__dirname, 'public');
+const publicIndex = path.join(publicDir, 'index.html');
+if (fs.existsSync(publicIndex)) {
+  app.use(express.static(publicDir));
+  app.get(/^(?!\/api|\/uploads|\/health).*/, (req, res) => {
+    res.sendFile(publicIndex);
   });
-});
+  logger.info('Serving frontend from server/public');
+} else {
+  app.use((req, res) => {
+    res.status(404).json({
+      success: false,
+      message: `Route ${req.originalUrl} not found`,
+    });
+  });
+}
 
 // Global error handler (must be last)
 app.use(errorHandler);
