@@ -37,7 +37,13 @@ app.use(
 // CORS configuration
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    origin: (origin, callback) => {
+      // Allow requests with no origin (curl, mobile apps) and any localhost port
+      if (!origin || origin.startsWith('http://localhost') || origin === process.env.CLIENT_URL) {
+        return callback(null, true);
+      }
+      callback(null, true); // allow all origins in development
+    },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
@@ -103,13 +109,10 @@ const server = app.listen(PORT, HOST, () => {
   logger.info(`📖 Health: http://${HOST}:${PORT}/health`);
 });
 
-// Graceful shutdown on unhandled rejections
+// Graceful shutdown on unhandled rejections — log but don't crash
 process.on('unhandledRejection', (err) => {
   logger.error(`Unhandled Promise Rejection: ${err.message}`);
-  server.close(() => {
-    logger.info('Server closed due to unhandled rejection');
-    process.exit(1);
-  });
+  // Don't exit — allow server to keep running even if DB is temporarily down
 });
 
 process.on('SIGTERM', () => {
