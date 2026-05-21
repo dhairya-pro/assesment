@@ -13,6 +13,7 @@ export default defineConfig({
     host: '0.0.0.0',
     port,
     strictPort: true,
+    allowedHosts: true,
     proxy: {
       '/api': {
         target: 'http://localhost:5000',
@@ -28,6 +29,7 @@ export default defineConfig({
     host: '0.0.0.0',
     port,
     strictPort: true,
+    allowedHosts: true,
   },
   build: {
     outDir: 'dist',
