@@ -1,4 +1,4 @@
-import { access } from 'node:fs/promises';
+import { access, readFile } from 'node:fs/promises';
 import { spawn } from 'node:child_process';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -14,6 +14,16 @@ try {
       '  Local:  npm run build && npm start\n' +
       '  Render build command: npm install --include=dev && npm run build\n' +
       '  Do not use "npm run dev" as the start command on Render.\n'
+  );
+  process.exit(1);
+}
+
+const html = await readFile(distIndex, 'utf8');
+if (html.includes('/src/')) {
+  console.error(
+    '\n[start] dist/index.html still points at /src/ (dev sources).\n' +
+      '  Fix Render build: npm install --include=dev && npm run build\n' +
+      '  Static Site publish directory must be "dist", not "client" or ".".\n'
   );
   process.exit(1);
 }

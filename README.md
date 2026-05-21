@@ -176,9 +176,10 @@ The app will be available at **http://localhost:5173**
 ## 🚀 Deployment
 
 ### Frontend (Vercel/Netlify / Render Static Site)
-1. Set `VITE_API_URL` to your backend URL (e.g. `https://your-api.onrender.com/api`)
-2. Build command: `npm run build`
-3. Output directory: `dist`
+1. **Root Directory:** `client`
+2. Set `VITE_API_URL` to your backend URL (e.g. `https://your-api.onrender.com/api`) **before** building
+3. **Build command:** `npm install --include=dev && npm run build`
+4. **Publish / output directory:** `dist` (not `client` — serving the repo root causes `_jsxDEV is not a function`)
 
 ### Frontend on Render (Web Service)
 Use these settings so Render can detect an open port:
