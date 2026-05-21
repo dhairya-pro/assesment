@@ -5,18 +5,21 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && node scripts/verify-dist.mjs",
+    "build": "vite build && node scripts/verify-dist.mjs",
+    "typecheck": "tsc --noEmit",
     "preview": "vite preview --host 0.0.0.0",
-    "start": "node scripts/start.mjs"
+    "start": "node scripts/start.mjs",
+    "render:build": "npm install --include=dev && npm run build",
+    "render:start": "npm start"
   },
   "devDependencies": {
+    "typescript": "~6.0.2"
+  },
+  "dependencies": {
     "@tailwindcss/vite": "^4.3.0",
     "@vitejs/plugin-react": "^6.0.2",
     "tailwindcss": "^4.3.0",
-    "typescript": "~6.0.2",
-    "vite": "^8.0.12"
-  },
-  "dependencies": {
+    "vite": "^8.0.12",
     "axios": "^1.16.1",
     "date-fns": "^4.2.1",
     "framer-motion": "^12.40.0",

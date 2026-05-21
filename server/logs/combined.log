@@ -38,3 +38,7 @@
 2026-05-21 21:44:21 [info]: ✅ MongoDB Connected: ac-6xapq73-shard-00-00.s5hlmsl.mongodb.net
 2026-05-21 21:45:32 [info]: 127.0.0.1 - - [21/May/2026:16:15:32 +0000] "GET /health HTTP/1.1" 200 100 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8457"
 2026-05-21 21:45:55 [info]: 127.0.0.1 - - [21/May/2026:16:15:55 +0000] "POST /api/auth/register HTTP/1.1" 201 531 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-IN) WindowsPowerShell/5.1.26100.8457"
+2026-05-21 21:54:29 [info]: ::1 - - [21/May/2026:16:24:29 +0000] "GET / HTTP/1.1" 404 47 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36"
+2026-05-21 21:54:29 [info]: ::1 - - [21/May/2026:16:24:29 +0000] "GET /favicon.ico HTTP/1.1" 404 58 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36"
+2026-05-21 21:59:51 [info]: ::1 - - [21/May/2026:16:29:51 +0000] "GET / HTTP/1.1" 404 47 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36"
+2026-05-21 21:59:59 [info]: ::1 - - [21/May/2026:16:29:59 +0000] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 95 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36"

@@ -182,20 +182,34 @@ The app will be available at **http://localhost:5173**
 4. **Publish / output directory:** `dist` (not `client` — serving the repo root causes `_jsxDEV is not a function`)
 
 ### Frontend on Render (Web Service)
-Use these settings so Render can detect an open port:
+
+Copy these **exactly** in the Render dashboard (or use `render.yaml` in the repo root):
 
 | Setting | Value |
 |--------|--------|
 | **Root Directory** | `client` |
-| **Build Command** | `npm install --include=dev && npm run build` |
+| **Build Command** | `npm install && npm run build` |
 | **Start Command** | `npm start` |
-| **Do not use** | `npm run dev` (causes `$RefreshSig$ is not defined` in production) |
+| **Never use** | `npm run dev` |
 
-Add `VITE_API_URL` in the Render environment variables before building (it is baked in at build time). `npm start` serves the built `dist/` folder with `serve` on `0.0.0.0` and `process.env.PORT`.
+**Environment variables** (add before deploy; `VITE_API_URL` is baked in at build time):
 
-`--include=dev` is required because Vite and TypeScript are devDependencies; without it the build step is skipped and the dev server may run instead.
+- `VITE_API_URL` = `https://YOUR-BACKEND.onrender.com/api`
 
-**Tip:** For a React SPA, Render **Static Site** (not Web Service) is usually simpler: same build command, publish `dist`, no start command needed.
+After deploy, open DevTools → Network. You must see `/assets/index-….js`. If you see `/src/AuthContext.jsx`, the settings above are wrong.
+
+`npm start` builds `dist/` if missing, then serves it with `serve` on `0.0.0.0`.
+
+### Frontend on Render (Static Site — recommended)
+
+| Setting | Value |
+|--------|--------|
+| **Root Directory** | `client` |
+| **Build Command** | `npm install && npm run build` |
+| **Publish Directory** | **`dist`** ← not `client` or `.` |
+| **Env** | `VITE_API_URL=https://YOUR-BACKEND.onrender.com/api` |
+
+Wrong publish directory (`client`) causes `$RefreshSig$ is not defined` and `_jsxDEV is not a function`.
 
 ### Backend (Render/Railway)
 1. **Root Directory:** `server` (not the repo root or `client`)
