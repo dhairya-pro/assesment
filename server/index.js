@@ -95,11 +95,12 @@ app.use((req, res) => {
 // Global error handler (must be last)
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5000;
+const PORT = Number(process.env.PORT) || 5000;
+const HOST = process.env.HOST || '0.0.0.0';
 
-const server = app.listen(PORT, () => {
-  logger.info(`🚀 Server running on port ${PORT} [${process.env.NODE_ENV}]`);
-  logger.info(`📖 Health: http://localhost:${PORT}/health`);
+const server = app.listen(PORT, HOST, () => {
+  logger.info(`🚀 Server running on ${HOST}:${PORT} [${process.env.NODE_ENV}]`);
+  logger.info(`📖 Health: http://${HOST}:${PORT}/health`);
 });
 
 // Graceful shutdown on unhandled rejections

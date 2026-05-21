@@ -175,15 +175,32 @@ The app will be available at **http://localhost:5173**
 
 ## 🚀 Deployment
 
-### Frontend (Vercel/Netlify)
-1. Set `VITE_API_URL` to your backend URL
+### Frontend (Vercel/Netlify / Render Static Site)
+1. Set `VITE_API_URL` to your backend URL (e.g. `https://your-api.onrender.com/api`)
 2. Build command: `npm run build`
 3. Output directory: `dist`
 
+### Frontend on Render (Web Service)
+Use these settings so Render can detect an open port:
+
+| Setting | Value |
+|--------|--------|
+| **Root Directory** | `client` |
+| **Build Command** | `npm install && npm run build` |
+| **Start Command** | `npm start` |
+| **Do not use** | `npm run dev` (binds to localhost only) |
+
+Add `VITE_API_URL` in the Render environment variables. The app serves the production build via `vite preview` on `0.0.0.0` and `process.env.PORT`.
+
+**Tip:** For a React SPA, Render **Static Site** (not Web Service) is usually simpler: same build command, publish `dist`, no start command needed.
+
 ### Backend (Render/Railway)
-1. Set all environment variables
-2. Start command: `npm start`
-3. Ensure `uploads/` directory exists or use cloud storage
+1. **Root Directory:** `server` (not the repo root or `client`)
+2. **Build command:** `npm install`
+3. **Start command:** `npm start` (do not use `npm run dev`)
+4. Set environment variables in the dashboard (do not commit `.env`). Render sets `PORT` automatically — do not hardcode it unless you know what you're doing.
+5. Ensure `uploads/` directory exists or use cloud storage
+6. The API listens on `0.0.0.0` and `process.env.PORT` so Render's health checks can reach it.
 
 ---
 
