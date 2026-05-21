@@ -186,11 +186,13 @@ Use these settings so Render can detect an open port:
 | Setting | Value |
 |--------|--------|
 | **Root Directory** | `client` |
-| **Build Command** | `npm install && npm run build` |
+| **Build Command** | `npm install --include=dev && npm run build` |
 | **Start Command** | `npm start` |
-| **Do not use** | `npm run dev` (binds to localhost only) |
+| **Do not use** | `npm run dev` (causes `$RefreshSig$ is not defined` in production) |
 
-Add `VITE_API_URL` in the Render environment variables. The app serves the production build via `vite preview` on `0.0.0.0` and `process.env.PORT`.
+Add `VITE_API_URL` in the Render environment variables before building (it is baked in at build time). `npm start` serves the built `dist/` folder with `serve` on `0.0.0.0` and `process.env.PORT`.
+
+`--include=dev` is required because Vite and TypeScript are devDependencies; without it the build step is skipped and the dev server may run instead.
 
 **Tip:** For a React SPA, Render **Static Site** (not Web Service) is usually simpler: same build command, publish `dist`, no start command needed.
 
